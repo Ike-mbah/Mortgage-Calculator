@@ -1,0 +1,289 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+html {
+  /* font-size: 90%; */
+}
+
+body {
+  background-color: hsl(202, 86%, 94%);
+}
+
+.container {
+  padding: 20px;
+}
+
+.card {
+  display: flex;
+  margin: 0 auto;
+  max-width: 900px;
+  min-height: 100px;
+  background-color: #fff;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.content-1 {
+  flex: 1;
+  background-color: #fff;
+  padding: 40px;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.head h3 {
+  color: hsl(201, 54%, 22%);
+}
+
+.clear-all-btn {
+  color: hsl(200, 26%, 54%);
+  transition: 0.3s all;
+  transition: all 0.3s;
+}
+
+.clear-all-btn:hover {
+  color: hsl(201, 54%, 22%);
+}
+
+.head-2 p {
+  color: hsl(200, 26%, 54%);
+  margin-bottom: 0.5rem;
+}
+
+.input-wrapper {
+  display: flex;
+  border: 1px solid hsl(200, 26%, 54%);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.input-wrapper input {
+  border: none;
+  padding: 6px;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: bold;
+  outline: none;
+  color: hsl(201, 54%, 22%);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+}
+.wrapper-1:hover {
+  transition: all 0.3s;
+  border-color: hsl(201, 54%, 22%);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+}
+
+.error-message {
+  color: hsl(0, 70%, 50%) !important;
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+  display: none;
+}
+
+.error .input-wrapper {
+  border: 1px solid hsl(0, 70%, 50%);
+}
+
+.error .prefix,
+.error .suffix {
+  background-color: hsl(0, 70%, 50%);
+  color: #fff;
+}
+
+.error .error-message {
+  display: block;
+}
+
+.prefix,
+.suffix {
+  background-color: hsl(202, 86%, 94%);
+  color: hsl(200, 24%, 40%);
+  padding: 6px 8px;
+  font-weight: bold;
+  font-size: large;
+}
+
+.head-3 {
+  display: flex;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+.head-3 p {
+  color: hsl(200, 26%, 54%);
+  margin-bottom: 0.2rem;
+}
+
+.radio-label {
+  display: block;
+  border: 1px solid hsl(200, 26%, 54%);
+  margin-bottom: 1rem;
+  padding: 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  color: hsl(201, 54%, 22%);
+}
+
+.head-4 p {
+  color: hsl(200, 26%, 54%);
+  margin-top: 1rem;
+  margin-bottom: 0.2rem;
+}
+
+.radio-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  margin: 0.5rem;
+  border: 1px solid hsl(200, 24%, 40%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s all;
+}
+
+.first-input input[type="radio"] {
+  appearance: none;
+}
+
+.first-input input[type="radio"]::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: hsl(61, 70%, 52%); /* Design Lime Yellow */
+  display: block;
+  transform: scale(0); /* Hide by default */
+  transition: transform 0.2s ease;
+}
+
+/* 3. Style for when the radio is SELECTED */
+
+.first-input input[type="radio"]:checked {
+  border-color: hsl(61, 70%, 52%); /* Change border to lime yellow */
+}
+
+.first-input input[type="radio"]:checked::after {
+  transform: scale(1); /* Show the inner dot */
+}
+
+.first-input:hover {
+  border-color: hsl(61, 65%, 67%);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s;
+}
+
+.calculate {
+  display: inline-block;
+  text-decoration: none;
+  background-color: hsl(61, 70%, 52%);
+  color: hsl(201, 54%, 22%);
+  padding: 0.3rem 1.5rem 0.3rem 4rem;
+  border-radius: 5rem;
+  margin-top: 1rem;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.calculate img {
+  position: absolute;
+  left: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.calculate:hover {
+  background-color: hsl(61, 80%, 73%);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+}
+
+.content-2 {
+  background-color: hsl(202, 55%, 16%);
+  padding: 40px;
+  flex: 1;
+  border-bottom-left-radius: 60px;
+}
+
+.empty-state {
+  text-align: center;
+  margin-top: 7rem;
+  display: block;
+}
+
+.result-state {
+  display: none;
+}
+
+.empty-state h3 {
+  color: #fff;
+}
+
+.empty-state p {
+  font-size: 0.89rem;
+  color: hsl(200, 30%, 65%);
+  line-height: 1.5rem;
+}
+
+.tail h3 {
+  color: #fff;
+}
+.tail p {
+  font-size: 0.9rem;
+  color: hsl(200, 30%, 65%);
+  line-height: 1.7rem;
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  background-color: hsl(201, 76%, 10%);
+  padding: 1.5rem 2rem 1rem 2rem;
+  border-radius: 0.5rem;
+  border-top: 4px solid hsl(61, 70%, 52%);
+}
+
+.result-head {
+  color: hsl(200, 30%, 65%);
+}
+
+.result-value-1 {
+  font-size: 2.5rem;
+  margin-top: -0.8rem;
+  padding-bottom: 0.8rem;
+  font-weight: bold;
+  color: hsl(61, 70%, 52%);
+  border-bottom: 1px solid #f8eded52;
+}
+
+.result-value-2 {
+  font-size: 2rem;
+  /* padding-bottom: 0.8rem; */
+  font-weight: bold;
+  color: #fff;
+}
+
+.result-box-2 p {
+  padding-top: 2rem;
+}
+
+.result-box-2 h2 {
+  margin-top: -1rem;
+}

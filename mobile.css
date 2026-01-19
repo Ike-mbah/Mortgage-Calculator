@@ -1,0 +1,135 @@
+@media (max-width: 600px) {
+  .card {
+    flex-direction: column;
+  }
+
+  .head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .empty-state {
+    margin-top: 0rem;
+  }
+}
+
+@media (max-width: 422px) {
+  .results {
+    max-width: 100%;
+  }
+
+  .result-head {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 401px) {
+  .error-message {
+    font-size: 0.8rem;
+  }
+
+  .result-head {
+    font-size: 0.8rem;
+  }
+
+  .tail p {
+    font-size: 0.8rem;
+  }
+
+  .empty-state p {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .calculate {
+    padding: 0.5rem 2rem 0.5rem 3rem;
+    width: 100%;
+  }
+
+  .calculate img {
+    left: 1rem;
+  }
+
+  .error-message {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .calculate {
+    padding: 0.2rem 1.5rem 0.2rem 2.6rem;
+    width: 100%;
+  }
+
+  .calculate img {
+    left: 0.9rem;
+  }
+
+  .error-message {
+    font-size: 0.7rem;
+  }
+
+  .result-head {
+    font-size: 0.73rem;
+  }
+
+  .tail p {
+    font-size: 0.73rem;
+  }
+
+  .empty-state p {
+    font-size: 0.73rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .calculate {
+    padding: 0.1rem 0.7rem 0.1rem 2.8rem;
+    width: 100%;
+  }
+
+  .calculate img {
+    left: 1rem;
+  }
+
+  .error-message {
+    font-size: 0.68rem;
+  }
+
+  .result-head {
+    font-size: 0.65rem;
+  }
+
+  .tail p {
+    font-size: 0.7rem;
+  }
+
+  .empty-state p {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 353px) {
+  .head-3 p {
+    font-size: 0.9rem;
+  }
+
+  .head-2 p {
+    font-size: 0.9rem;
+  }
+
+  .head-4 p {
+    font-size: 0.9rem;
+  }
+
+  .calculate h4 {
+    font-size: 0.9rem;
+    width: 100%;
+  }
+
+  .calculate img {
+    width: 20px;
+    left: 1.3rem;
+  }
+}
