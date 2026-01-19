@@ -8,10 +8,6 @@
     flex-direction: column;
     align-items: flex-start;
   }
-
-  .empty-state {
-    margin-top: 0rem;
-  }
 }
 
 @media (max-width: 422px) {
@@ -134,5 +130,6 @@
     left: 1.3rem;
   }
 }
+
 
 
