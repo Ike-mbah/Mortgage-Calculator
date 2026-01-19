@@ -11,6 +11,10 @@
   .empty-state {
     margin-top: 0rem;
   }
+
+  .card{
+    background-color: transparent;
+  }
 }
 
 @media (max-width: 422px) {
@@ -133,3 +137,4 @@
     left: 1.3rem;
   }
 }
+
