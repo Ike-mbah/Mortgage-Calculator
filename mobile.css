@@ -1,6 +1,7 @@
 @media (max-width: 600px) {
   .card {
     flex-direction: column;
+    background-color: transparent;
   }
 
   .head {
@@ -10,10 +11,6 @@
 
   .empty-state {
     margin-top: 0rem;
-  }
-
-  .card{
-    background-color: transparent;
   }
 }
 
@@ -137,4 +134,5 @@
     left: 1.3rem;
   }
 }
+
 
