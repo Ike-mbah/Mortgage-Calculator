@@ -1,30 +1,37 @@
 const calculateBtn = document.querySelector(".calculate");
 const clearAllBtn = document.querySelector(".clear-all-btn");
-
 const emptyResult = document.querySelector(".empty-state");
 const resultState = document.querySelector(".result-state");
-
 const monthlyDisplay = document.querySelector(".result-value-1");
 const totalDisplay = document.querySelector(".result-value-2");
-const inputs = document.querySelectorAll(
-  "input[type='number'], input[type='radio']"
-);
+const inputs = document.querySelectorAll("input[type='number'], input[type='radio']");
+const radioInputs = document.querySelectorAll("input[name='mortgageType']");
 
-// CALCULATE BUTTON FUNCTIONALITY
+// 1. HELPER: Validation logic
+function validateInput(input) {
+  const parent =
+    input.closest(".head-2, .head-3 > div, .head-4 > div") ||
+    input.parentElement;
+  if (input.value.trim() === "") {
+    parent.classList.add("error");
+    return false;
+  } else {
+    parent.classList.remove("error");
+    return true;
+  }
+}
+
+// 2. MAIN CALCULATION
 calculateBtn.addEventListener("click", function (e) {
   e.preventDefault();
-
-  // Run validation on the input Type (Numbers)
   let isFormValid = true;
 
+  // Validate number inputs
   inputs.forEach((input) => {
-    validateInput(input);
-    if (input.value.trim() === "") {
-      isFormValid = false;
-    }
+    if (!validateInput(input)) isFormValid = false;
   });
 
-  // Run validation on Mortgage Type (Radios)
+  // Validate radio buttons
   const mortgageTypeRadio = document.querySelector(
     'input[name="mortgageType"]:checked'
   );
@@ -37,33 +44,24 @@ calculateBtn.addEventListener("click", function (e) {
     typeContainer.classList.remove("error");
   }
 
-  // ONLY proceed with calculations if the form is valid
   if (isFormValid) {
-    // ... include your existing math formulas here ...
-    resultState.style.display = "block";
-    emptyResult.style.display = "none";
+    calculateResults(mortgageTypeRadio.value);
   } else {
-    // If invalid, show the empty state and stop
     resultState.style.display = "none";
     emptyResult.style.display = "block";
   }
+});
 
-  //
-  const mortgageAmount = parseFloat(
-    document.querySelector(".wrapper-1 input").value
-  );
-  const mortgageTerm = parseFloat(
-    document.querySelector(".wrapper-2 input").value
-  );
+function calculateResults(mortgageType) {
+  const mortgageAmount = parseFloat(document.querySelector("#amount").value);
+  const mortgageTerm = parseFloat(document.querySelector("#term").value);
   const interestRate =
-    parseFloat(document.querySelector(".wrapper-3 input").value) / 100 / 12; // Monthly interest rate
-  const n = mortgageTerm * 12; // Total number of payments (months)
-  const mortgageType = document.querySelector(
-    'input[type="radio"]:checked'
-  ).value;
+    parseFloat(document.querySelector("#interest").value) / 100 / 12;
+  const n = mortgageTerm * 12;
 
   let monthlyRepayment = 0;
   let totalRepayment = 0;
+
   if (mortgageType === "Repayment") {
     const formula = Math.pow(1 + interestRate, n);
     monthlyRepayment =
@@ -74,55 +72,33 @@ calculateBtn.addEventListener("click", function (e) {
     totalRepayment = monthlyRepayment * n + mortgageAmount;
   }
 
-  if (!isNaN(monthlyRepayment) && isFinite(monthlyRepayment)) {
-    // Format to British Pound currency
-    const formatter = new Intl.NumberFormat("en-GB", {
-      style: "currency",
-      currency: "GBP",
-    });
-    monthlyDisplay.innerText = formatter.format(monthlyRepayment);
-    totalDisplay.innerText = formatter.format(totalRepayment);
-
-    // Switch Visibility
-    emptyResult.style.display = "none";
-    resultState.style.display = "block";
-  } else {
-    alert("Please enter valid numbers in all fields.");
-  }
-
-  // FOR THE ERROR MESSAGE DISPLAY
-
-  function validateInput(input) {
-    const parent =
-      input.closest(".head-2") ||
-      input.closest(".head-3 > div") ||
-      input.closest(".head-4 > div") ||
-      input.parentElement.parentElement;
-
-    if (input.value.trim() === "") {
-      parent.classList.add("error");
-    } else {
-      parent.classList.remove("error");
-    }
-  }
-
-  inputs.forEach((input) => {
-    input.addEventListener("blur", () => {
-      validateInput(input);
-    });
-
-    input.addEventListener("input", () => {
-      if (input.value.trim() !== "") {
-        const errorContainer = input.closest(".error");
-        if (errorContainer) {
-          errorContainer.classList.remove("error");
-        }
-      }
-    });
+  const formatter = new Intl.NumberFormat("en-GB", {
+    style: "currency",
+    currency: "GBP",
   });
+
+  monthlyDisplay.innerText = formatter.format(monthlyRepayment);
+  totalDisplay.innerText = formatter.format(totalRepayment);
+
+  emptyResult.style.display = "none";
+  resultState.style.display = "block";
+}
+
+//3. EVENT LISTENERS (Outside the click loop)
+inputs.forEach((input) => {
+  input.addEventListener("input", () => validateInput(input));
 });
 
-// CLEAR ALL BUTTON FUNCTIONALITY
+// 4. CLEAR ALL BUTTON FUNCTIONALITY
+
+clearAllBtn.addEventListener("click", () => {
+  document.querySelector("form").reset();
+  document
+    .querySelectorAll(".error")
+    .forEach((el) => el.classList.remove("error"));
+  resultState.style.display = "none";
+  emptyResult.style.display = "block";
+});
 
 clearAllBtn.addEventListener("click", function (e) {
   e.preventDefault();
@@ -141,8 +117,4 @@ clearAllBtn.addEventListener("click", function (e) {
   // Reset results to the empty state
   resultState.style.display = "none";
   emptyResult.style.display = "block";
-
-  //clear all the calculated text values
-  //   monthlyDisplay.innerText = "£0.00";
-  //   totalDisplay.innerText = "£0.00";
 });
